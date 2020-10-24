@@ -27,17 +27,17 @@ const Login = () => {
 
   const responseGoogle = async (res) => {
     console.log(res);
-    if (res.profileObj.name) {
+    if (res.tokenObj.access_token) {
       localStorage.setItem("token", res.tokenObj.access_token);
       history.replace("/");
     } else {
       return <Redirect to="/login" />;
     }
+    console.log(res);
   };
 
   return (
     <div className="LoginContainer">
-      {localStorage.getItem("token") ? <Redirect to="/" /> : null}
       <div className="LoginWrapper">
         <div className="LeftSection"></div>
         <div className="RightSection">
